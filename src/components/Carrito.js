@@ -1,7 +1,7 @@
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
-
-import {  Card, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import {  CardGroup, Col, Row, Container, Card, Button} from 'react-bootstrap';
 
 
 function Carrito() {
@@ -9,27 +9,60 @@ function Carrito() {
   const  context = useContext(CartContext)
   
     return (
-     <>         
+      <>
+             
+            <Container className="mb-3" align="center" >
+            <Row  >
+    <Col sm={6} >
+            <CardGroup>
+            {(context.quantity).map((index) => {
+                return (
+                    <div>
+        
                        
       <Card border="secondary">
-      <Card.Img variant="top" style={{ width: '150px' }} src={"../src/botella"} />
+                      <Card.Img variant="top" style={{ width: '150px' }} src={(context.imagen)[index]} />
      <Card.Body>
-        <Card.Title>{context.cart}
-{ console.log(context.cart) }
-            </Card.Title>
-          <h3>{context.quantity}</h3>  
-       <Card.Text>
-       
-         Some quick example text to build on the card title and make up the bulk of
-         the card's content.
-                   </Card.Text>
+        <Card.Title>{(context.cart)[index]}
 
-                <Button  variant="warning">COMPRAR</Button>
-              
-       </Card.Body>
-        </Card>
+       </Card.Title>
+      
+                                <Button onClick={() => {
+                                    
+                                       
+                                    
+                                }}  >COMPRAR</Button>
+                              <br/>
+                                <Link className="btn btn-warning" to="/Carrito"
+                                    
+                                    onClick={() => {
+
+                                       
+                                        
+                                    }} 
+                                    
+                                    variant="warning">Carrito</Link>
+                               
+                               
+                               
+                                <Card.Text>
+           <br/>                         
        
-                  </>
+       </Card.Text>
+       </Card.Body>
+       </Card>
+                    
+          
+                  
+              </div>
+                )
+            })}
+                    
+                        </CardGroup>
+                        </Col>
+</Row>
+                    </Container>
+                   </>
     );
 
 }  export default Carrito; 

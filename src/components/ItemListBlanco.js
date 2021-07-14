@@ -16,6 +16,7 @@ function ItemListBlanco() {
     useEffect(() => {
         async function getData() {
             const response = await fetch("https://api.mercadolibre.com/sites/MLA/search?q=vinosblancos");
+                                                                                                            
             const data = await response.json();
           return data.results;
           } 
@@ -30,8 +31,9 @@ function ItemListBlanco() {
             })
 
             setProductos(aux);
+            
        }
-
+       
            esperandoDatos();
     }, [])
 
@@ -39,6 +41,7 @@ function ItemListBlanco() {
 
     return (
         <>
+            {console.log(productos)}
             <Container className="mb-3" align="center" >
             <Row  >
     <Col sm={6} >
@@ -62,7 +65,9 @@ function ItemListBlanco() {
 
                                 <Button onClick={() => {
                                     context.setCart(element.title);
-                               const i=1
+                                    context.setImagen(element.img);
+                                    context.setPrice(element.price);
+                               const i=0
                                     context.setQuantity(i+1)
                                 
                                 }}  >COMPRAR</Button>
