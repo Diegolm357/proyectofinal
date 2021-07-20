@@ -1,7 +1,7 @@
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
 import React, { useEffect, useState } from "react";
-import { CardGroup, Container, Card, Col, Row, Button} from 'react-bootstrap';
+import {  CardGroup, Container, Card, Col, Row, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import ItemCount  from './ItemCount';
@@ -35,6 +35,9 @@ useEffect(() => {
     esperandoDatos();
 }, [])
     
+
+    
+    
 return (
     <>
         <Container className="mb-3" align="center" >
@@ -67,7 +70,9 @@ return (
                                     
                                             <Card.Text>
                                                 <br />
-                                                <ItemCount  />
+
+                                               
+<ItemCount/>                                                
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>
