@@ -43,7 +43,7 @@ function ItemListBlanco() {
         <>
             {console.log(productos)}
             <Container className="mb-3" align="center" >
-            <Row  >
+            <Row >
     <Col sm={6} >
             <CardGroup>
             {productos.map(element => {
@@ -75,13 +75,12 @@ function ItemListBlanco() {
                                 <Link className="btn btn-warning" to="/Carrito" variant="warning">Carrito</Link>
                                 <Card.Text>
            <br/>                         
-       <ItemCount />
+           <ItemCount />
        </Card.Text>
        </Card.Body>
        </Card>
  
-                           
-          
+            
                   
               </div>
                 )
