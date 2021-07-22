@@ -1,7 +1,6 @@
-import { CartContext } from '../context/CartContext';
-import { useContext } from 'react';
+
 import React, { useEffect, useState } from "react";
-import {  CardGroup, Container, Card, Col, Row, Button} from 'react-bootstrap';
+import {  CardGroup, Container, Card, Col, Row} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import ItemCount  from './ItemCount';
@@ -9,8 +8,7 @@ import ItemCount  from './ItemCount';
 function ItemListEspumante() {
     let [productos, setProductos] = useState([]);
        
-        const context = useContext(CartContext);  
-   
+          
 useEffect(() => {
     async function getData() {
         const response = await fetch("https://api.mercadolibre.com/sites/MLA/search?q=vinosespumantes");
@@ -46,9 +44,9 @@ return (
                     <CardGroup>
                         {productos.map(element => {
                             return (
-                                <div>
+                                <div >
                                
-                                    <Card border="secondary">
+                                    <Card border="secondary" key={element.lenght}>
                                         <Card.Img variant="top" style={{ width: '150px' }} src={element.img} />
                                         <Card.Body>
                                             <Card.Title>{element.title}
@@ -57,12 +55,7 @@ return (
                                             <Card.Text>
                                                 Precio: $ {element.price} 
                                             </Card.Text>
-                                            <Button onClick={() => {
-                                                context.setImagen([element.img]);
-                                                context.setPrecio([element.price]);
-                                                context.setCart([element.title]);
-                                               
-                                            }} >+ Carrito</Button>
+                                           
                                             <br />
                                             <Link className="btn btn-warning" to="/Carrito"
                                     
@@ -70,9 +63,8 @@ return (
                                     
                                             <Card.Text>
                                                 <br />
-
                                                
-<ItemCount/>                                                
+                                                <ItemCount item={element}/>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>

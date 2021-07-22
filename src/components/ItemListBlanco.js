@@ -1,5 +1,4 @@
-import { CartContext } from '../context/CartContext';
-import { useContext } from 'react';
+
 import React, { useEffect, useState } from "react";
 import { CardGroup, Container, Card, Col, Row, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,8 +9,7 @@ function ItemListBlanco() {
     let [productos, setProductos] = useState([]);
      
 
-    const context = useContext(CartContext);
-
+    
     
     useEffect(() => {
         async function getData() {
@@ -64,11 +62,8 @@ function ItemListBlanco() {
                    </Card.Text>
 
                                 <Button onClick={() => {
-                                    context.setCart(element.title);
-                                    context.setImagen(element.img);
-                                    context.setPrice(element.price);
-                               const i=0
-                                    context.setQuantity(i+1)
+                                   
+                              
                                 
                                 }}  >COMPRAR</Button>
                               <br/>

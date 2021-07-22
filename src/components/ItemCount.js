@@ -1,12 +1,16 @@
 import { CartContext } from '../context/CartContext';
 import { useContext } from 'react';
-
+import {useState} from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
-function ItemCount() {
+function ItemCount(item) {
  
   const context = useContext(CartContext);  
+  const [contador, setContador] = useState(1);
+  var texto = '';
   
+   contador>=10?(texto='No hay mas Stock'):(texto='Stock disponible');
+   
     
   return (
     <>
@@ -14,19 +18,28 @@ function ItemCount() {
         <Button 
          
           onClick={() => {
-            context.resta()
-           }
+            if (contador > 1) {
+              
+            
+           
+              setContador(contador - 1);
+                
+            }
 
-   }>-</Button>
+          }}>-</Button>
 
-        <h1>  &nbsp; {context.contador} &nbsp;  </h1>
+        <h1>  &nbsp; {contador} &nbsp;  </h1>
        
         <Button  onClick={() => {
-          context.suma()
+          
+          setContador(contador + 1);
+     console.log(item)
+    
         }}>+</Button>
                 
     </ButtonGroup>
-   <h2>{context.texto}</h2>
+      <h2>{texto} </h2>
+      <Button onclick={()=>{context.addToCart(item, contador)}}>Agregar</Button>
    
     </>
    
@@ -35,5 +48,3 @@ function ItemCount() {
 }
 
 export default ItemCount;
-
-
